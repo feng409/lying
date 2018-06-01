@@ -46,30 +46,33 @@
     <div class="content">
         <h2>颖，我们已经在一起了</h2>
         <div class="timer">
-            <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
+            <b id="y"></b> 年 
+            <b id="m"></b> 月 
+            <b id="d"></b> 天 
+            <b id="h"></b> 小时 
+            <b id="i"></b> 分钟 
+            <b id="s"></b> 秒
         </div>
     </div>
 
+    <script src="https://cdn.bootcss.com/moment.js/2.22.1/moment.min.js"></script>
     <script>
         function timer() {
-            var start = new Date(2016, 6, 3); // 2015.7.2
-            var t = new Date() - start;
-            var h = ~~(t / 1000 / 60 / 60 % 24);
-            if (h < 10) {
-                h = "0" + h;
-            }
-            var m = ~~(t / 1000 / 60 % 60);
-            if (m < 10) {
-                m = "0" + m;
-            }
+            var start = moment('2016-06-03 10:21:00');
+            var now = moment();
+            var duration = moment.duration(now - start);
+            var y = duration.years();
+            var m = duration.months();
+            var d = duration.days();
+            var h = duration.hours();
+            var i = duration.minutes();
+            var s = duration.seconds();
 
-            var s = ~~(t / 1000 % 60);
-            if (s < 10) {
-                s = "0" + s;
-            }
-            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
-            document.getElementById('h').innerHTML = h;
+            document.getElementById('y').innerHTML = y;
             document.getElementById('m').innerHTML = m;
+            document.getElementById('d').innerHTML = d;
+            document.getElementById('h').innerHTML = d;
+            document.getElementById('i').innerHTML = i;
             document.getElementById('s').innerHTML = s;
         }
         timer();
