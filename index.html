@@ -59,7 +59,7 @@
     <script>
         function timer() {
             var start = moment('2016-06-03 10:21:00');
-            var now = moment();
+            var now = moment().add(1, 'days');// 因为moment.js 加减时候当天没有过去不算，会少了一天
             var duration = moment.duration(now - start);
             var y = duration.years();
             var m = duration.months();
@@ -71,7 +71,7 @@
             document.getElementById('y').innerHTML = y;
             document.getElementById('m').innerHTML = m;
             document.getElementById('d').innerHTML = d;
-            document.getElementById('h').innerHTML = d;
+            document.getElementById('h').innerHTML = h;
             document.getElementById('i').innerHTML = i;
             document.getElementById('s').innerHTML = s;
         }
